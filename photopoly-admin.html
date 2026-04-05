@@ -202,7 +202,10 @@ button{font-family:inherit;cursor:pointer}
 <div class="drawer" id="drawer">
   <div class="d-hdr">
     <h2 id="d-title">Order</h2>
-    <button class="btn-close" onclick="closeDrawer()">✕</button>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="btn-delete-order" style="padding:6px 12px;border-radius:7px;background:#FFF0F0;border:1.5px solid #FFCDD2;color:#C62828;font-size:.72rem;font-weight:700;cursor:pointer" onclick="deleteOrder()">Delete</button>
+      <button class="btn-close" onclick="closeDrawer()">✕</button>
+    </div>
   </div>
   <div class="d-body" id="d-body"></div>
 </div>
@@ -447,6 +450,38 @@ async function openDrawer(oid){
 function closeDrawer(){
   document.getElementById('d-overlay').classList.remove('open');
   document.getElementById('drawer').classList.remove('open');
+}
+
+async function deleteOrder(){
+  var oid=document.getElementById('d-title').textContent.replace('Order #','').trim();
+  if(!oid){alert('No order selected.');return}
+  if(!confirm('Delete order #'+oid+'?\n\nThis will permanently remove the order and cannot be undone.')){return}
+
+  var btn=document.getElementById('btn-delete-order');
+  btn.textContent='Deleting…';btn.disabled=true;
+
+  try{
+    if(useSupabase){
+      await fetch(SUPABASE_URL+'/rest/v1/order_photos?order_id=eq.'+encodeURIComponent(oid),{
+        method:'DELETE',
+        headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Prefer':'return=minimal'}
+      });
+      await fetch(SUPABASE_URL+'/rest/v1/orders?id=eq.'+encodeURIComponent(oid),{
+        method:'DELETE',
+        headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Prefer':'return=minimal'}
+      });
+    } else {
+      var orders=getOrdersLocal().filter(function(o){return o.id!==oid});
+      saveOrdersLocal(orders);
+    }
+    cachedOrders=cachedOrders.filter(function(o){return o.id!==oid});
+    closeDrawer();
+    renderOrders();
+    alert('Order #'+oid+' deleted.');
+  }catch(e){
+    alert('Delete failed: '+e.message);
+    btn.textContent='Delete';btn.disabled=false;
+  }
 }
 
 async function updateStatus(oid,val){
