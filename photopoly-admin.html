@@ -352,6 +352,8 @@ async function openDrawer(oid){
   if(!o)return;
   document.getElementById('d-title').textContent='#'+o.id;
   currentOid=o.id;
+  var delBtn=document.getElementById('btn-delete-order');
+  if(delBtn){delBtn.textContent='Delete';delBtn.disabled=false;}
   var photos=o._photos||[];
   var photoCount=o.photo_count||0;
   var filled=photos.filter(function(p){return p}).length;
