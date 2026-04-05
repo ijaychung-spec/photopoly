@@ -47,6 +47,7 @@ exports.handler = async (event) => {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
+      locale: 'en',
       success_url: origin + '/photopoly-confirm?order=' + orderId + '&share=' + shareId + '&paid=1',
       cancel_url: origin + '/photopoly?cancelled=1',
       metadata: {
