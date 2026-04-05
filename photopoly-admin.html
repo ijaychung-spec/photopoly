@@ -462,22 +462,17 @@ async function deleteOrder(){
 
   try{
     if(useSupabase){
-      await fetch(SUPABASE_URL+'/rest/v1/order_photos?order_id=eq.'+encodeURIComponent(oid),{
-        method:'DELETE',
-        headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Prefer':'return=minimal'}
-      });
-      await fetch(SUPABASE_URL+'/rest/v1/orders?id=eq.'+encodeURIComponent(oid),{
-        method:'DELETE',
-        headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Prefer':'return=minimal'}
-      });
+      var headers={'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Prefer':'return=minimal'};
+      await Promise.all([
+        fetch(SUPABASE_URL+'/rest/v1/order_photos?order_id=eq.'+encodeURIComponent(oid),{method:'DELETE',headers:headers}),
+        fetch(SUPABASE_URL+'/rest/v1/orders?id=eq.'+encodeURIComponent(oid),{method:'DELETE',headers:headers})
+      ]);
     } else {
-      var orders=getOrdersLocal().filter(function(o){return o.id!==oid});
-      saveOrdersLocal(orders);
+      saveOrdersLocal(getOrdersLocal().filter(function(o){return o.id!==oid}));
     }
     cachedOrders=cachedOrders.filter(function(o){return o.id!==oid});
     closeDrawer();
     renderOrders();
-    alert('Order #'+oid+' deleted.');
   }catch(e){
     alert('Delete failed: '+e.message);
     btn.textContent='Delete';btn.disabled=false;
