@@ -9,8 +9,9 @@
 <style>
 :root{
   --bg:#FFFFFF;--bg2:#FAFAFA;--border:#EFEFEF;
-  --text:#1A1A1A;--text2:#5A6B62;--text3:#A8B8B0;
-  --green:#2D7D52;--gl:#EBF5EF;--gh:#236441;--gm:#4CAF78;
+  --text:#1A1A1A;--text2:#4A6670;--text3:#9AB4BC;
+  --green:#2A9D8F;--gl:#E8F6F5;--gh:#1F7A6E;--gm:#3DBDAE;
+  --accent2:#457B9D;--accent3:#E63946;--accent4:#F4A261;--accent5:#E9C46A;
   --r:12px;--rl:18px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -20,7 +21,7 @@ button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation;font-
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;background:#fff;border-bottom:1.5px solid var(--border)}
-.logo{font-size:1.25rem;font-weight:800;letter-spacing:-0.04em;background:none;border:none;cursor:pointer;color:var(--text)}
+.logo{font-size:1.25rem;font-weight:800;letter-spacing:-0.04em;background:none;border:none;cursor:pointer;color:var(--text);padding:0;display:flex;align-items:center}
 .logo span{color:var(--green)}
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-btn{background:none;border:none;cursor:pointer;color:var(--text2);font-size:0.875rem;font-weight:500;padding:0;transition:color .15s}
@@ -34,14 +35,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 /* HERO */
 .hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:88px 44px 60px;gap:52px;min-height:100vh}
 .hero-left{display:flex;flex-direction:column}
-.hero-chip{display:inline-flex;align-items:center;gap:8px;background:#FFF3E0;color:#E65100;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:22px}
-.hero-dot{width:6px;height:6px;border-radius:50%;background:#E65100;flex-shrink:0}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--gl);color:var(--green);font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:22px}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 .hero h1{font-size:clamp(2rem,3.2vw,3.4rem);font-weight:800;letter-spacing:-0.05em;line-height:1.08;margin-bottom:16px}
 .hero h1 span{color:var(--green)}
 .hero-sub{font-size:.96rem;color:var(--text2);line-height:1.8;margin-bottom:28px;max-width:450px}
 .hero-img-mobile{display:none}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
-.btn-primary{padding:14px 26px;border-radius:10px;background:var(--green);color:#fff;font-size:.9rem;font-weight:700;border:none;cursor:pointer;transition:all .15s;box-shadow:0 4px 16px rgba(45,125,82,.28);display:inline-flex;align-items:center;gap:6px}
+.btn-primary{padding:14px 26px;border-radius:10px;background:var(--green);color:#fff;font-size:.9rem;font-weight:700;border:none;cursor:pointer;transition:all .15s;box-shadow:0 4px 16px rgba(42,157,143,.3);display:inline-flex;align-items:center;gap:6px}
 .btn-primary:hover{background:var(--gh);transform:translateY(-1px)}
 .btn-ghost{padding:13px 22px;border-radius:10px;background:#fff;color:var(--text);font-size:.9rem;font-weight:500;border:1.5px solid var(--border);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
 .btn-ghost:hover{border-color:var(--green);color:var(--green)}
@@ -72,15 +73,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 .sec-sub{font-size:.9rem;color:var(--text2);line-height:1.75;margin-bottom:24px}
 
 /* Occasion banners — Instagram inspired */
-.occasion-banners{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
-.occ-banner{border-radius:14px;height:120px;cursor:pointer;transition:all .22s;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:14px 16px;overflow:hidden;position:relative}
-.occ-banner:hover{transform:scale(1.03);box-shadow:0 8px 24px rgba(0,0,0,.13)}
-.occ-birthday{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)}
-.occ-anniversary{background:linear-gradient(135deg,#405de6 0%,#5851db 25%,#833ab4 50%,#c13584 75%,#e1306c 100%)}
-.occ-holiday{background:linear-gradient(135deg,#43c6ac 0%,#3a9bd5 50%,#405de6 100%)}
-.occ-justbecause{background:linear-gradient(135deg,#2D7D52 0%,#4CAF78 50%,#236441 100%)}
-.occ-title{font-size:1rem;font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1.1;margin-bottom:3px;text-shadow:0 1px 4px rgba(0,0,0,.15)}
-.occ-desc{font-size:.68rem;color:rgba(255,255,255,.82);font-weight:500;letter-spacing:.01em}
+.occasion-list{margin-top:20px;display:flex;flex-direction:column;gap:0}
+.occ-item{font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;color:var(--text);padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.occ-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
+.occ-item:first-child{border-top:1px solid var(--border)}
 
 /* Product slideshow */
 .product-slideshow{margin-top:40px;position:relative;border-radius:var(--rl);overflow:hidden;box-shadow:0 8px 32px rgba(45,125,82,.12);background:var(--bg)}
@@ -186,7 +182,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 .sum-title{font-size:.84rem;font-weight:700;margin-bottom:13px}
 .sum-row{display:flex;justify-content:space-between;font-size:.82rem;color:var(--text2);margin-bottom:7px}
 .sum-row.total{border-top:1px solid var(--border);padding-top:11px;margin-top:3px;margin-bottom:0;font-size:.98rem;font-weight:700;color:var(--text)}
-.btn-pay{width:100%;padding:15px;background:var(--green);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .15s;box-shadow:0 4px 16px rgba(45,125,82,.26)}
+.btn-pay{width:100%;padding:15px;background:var(--green);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .15s;box-shadow:0 4px 16px rgba(42,157,143,.28)}
 .btn-pay:hover{background:var(--gh);transform:translateY(-1px)}
 .ship-type-row{display:flex;gap:10px;margin-bottom:16px}
 .ship-type-btn{flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--border);background:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;transition:all .15s;font-family:inherit}
@@ -200,13 +196,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 .intent-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
 .intent-card{border-radius:14px;overflow:hidden;cursor:pointer;transition:all .22s;padding:28px 26px;display:flex;flex-direction:column;justify-content:space-between;min-height:160px;position:relative}
 .intent-card:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,.15)}
-.intent-self{background:#111111}
-.intent-gift{background:linear-gradient(135deg,#1e6640 0%,#0f3d25 100%)}
-.intent-tag{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px;color:rgba(255,255,255,.5)}
+.intent-self{background:linear-gradient(135deg,#1A2A3A 0%,#2C3E50 50%,#457B9D 100%)}
+.intent-gift{background:linear-gradient(135deg,#E63946 0%,#F4A261 100%)}
+.intent-tag{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px;color:rgba(255,255,255,.7)}
 .intent-title{font-size:1.35rem;font-weight:800;letter-spacing:-0.04em;line-height:1.15;color:#fff;margin-bottom:8px}
-.intent-desc{font-size:.75rem;color:rgba(255,255,255,.75);line-height:1.55;flex:1;margin-bottom:18px}
-.intent-cta{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);color:#fff;padding:8px 16px;border-radius:8px;font-size:.75rem;font-weight:700;border:1px solid rgba(255,255,255,.3);width:fit-content;transition:background .15s}
-.intent-card:hover .intent-cta{background:rgba(255,255,255,.28)}
+.intent-desc{font-size:.75rem;color:rgba(255,255,255,.82);line-height:1.55;flex:1;margin-bottom:18px}
+.intent-cta{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.22);color:#fff;padding:8px 16px;border-radius:8px;font-size:.75rem;font-weight:700;border:1px solid rgba(255,255,255,.35);width:fit-content;transition:background .15s}
+.intent-card:hover .intent-cta{background:rgba(255,255,255,.32)}
 
 /* Gift mode banner */
 .gift-mode-banner{display:flex;align-items:center;gap:12px;background:var(--gl);border:1.5px solid var(--green);border-radius:var(--r);padding:14px 16px;margin-bottom:20px}
@@ -228,7 +224,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 .hero-slide-wrap{position:relative;width:100%;max-width:480px;border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.13)}
 .hero-slide-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .hero-slide{min-width:100%;flex-shrink:0}
-.hero-slide-img{border-radius:0!important;box-shadow:none!important;aspect-ratio:1/1;max-height:480px;object-fit:cover}
+.hero-slide-img{border-radius:0!important;box-shadow:none!important;aspect-ratio:1/1;max-height:480px;object-fit:cover;width:100%}
 .hero-slide-dots{display:flex;justify-content:center;gap:6px;padding:10px 0;background:#fff;border-top:1px solid var(--border)}
 .hsd{width:6px;height:6px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
 .hsd.active{background:var(--green);width:18px;border-radius:3px}
@@ -344,7 +340,6 @@ footer p{font-size:.74rem;color:var(--text3)}
   .hero-img-mobile{display:block;width:100%;max-width:320px;margin:0 auto 24px;}
   .gift-inner{grid-template-columns:1fr;gap:32px}
   .gift-section{padding:52px 18px}
-  .occasion-banners{gap:8px}
   .section{padding:52px 18px}
   .ig-banner{padding:13px 18px}
   .slide{grid-template-columns:1fr;min-height:auto}
@@ -365,6 +360,8 @@ footer p{font-size:.74rem;color:var(--text3)}
   .hero{grid-template-columns:1fr!important;padding:68px 14px 36px!important;min-height:auto!important;gap:0!important}
   .hero-right{display:none!important}
   .hero-img-mobile{display:block!important;width:100%;max-width:100%;margin:0 0 20px;}
+  .hero-img-mobile .hero-slide-wrap{max-width:100%;border-radius:14px}
+  .hero-img-mobile .hero-slide-img{max-height:300px}
   .hero h1{font-size:1.75rem}
   .hero-sub{font-size:.86rem;margin-bottom:20px}
   .hero-chip{font-size:.68rem}
@@ -380,19 +377,15 @@ footer p{font-size:.74rem;color:var(--text3)}
   .gift-inner{grid-template-columns:1fr!important;gap:28px}
   .sec-title{font-size:1.45rem}
   .sec-sub{font-size:.84rem}
-  .occasion-banners{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;overflow-x:visible}
-  .occ-banner{min-width:unset!important;height:90px!important}
-  .occ-title{font-size:.76rem}
-  .occ-desc{display:none}
   .section{padding:40px 14px}
   .coating-toggle{font-size:.8rem}
   .ct-btn{padding:10px 14px;font-size:.8rem}
-  .slide{grid-template-columns:1fr!important;height:300px!important}
-  .slide-real-img{min-height:190px}
-  .slide-info{border-left:none!important;border-top:1px solid var(--border);padding:18px 16px!important}
+  .slide{grid-template-columns:1fr!important;height:auto!important}
+  .slide-real-img{min-height:200px;max-height:240px}
+  .slide-info{border-left:none!important;border-top:1px solid var(--border);padding:18px 16px!important;height:auto!important}
   .slide-title{font-size:1rem}
   .slide-desc{font-size:.78rem}
-  .slide-visual{min-height:190px}
+  .slide-visual{min-height:200px;max-height:240px}
   .ps-caption{font-size:.7rem;padding:8px 12px}
   .ps-prev,.ps-next{width:28px;height:28px;font-size:.78rem}
   .how-grid{grid-template-columns:1fr 1fr;gap:8px}
@@ -427,7 +420,20 @@ footer p{font-size:.74rem;color:var(--text3)}
 
 <!-- NAV -->
 <nav>
-  <button class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">Photo<span>poly</span></button>
+  <button class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="160" height="36" viewBox="0 0 160 36" xmlns="http://www.w3.org/2000/svg" style="display:block">
+      <rect x="0" y="2" width="7" height="7" rx="1.2" fill="#E63946"/>
+      <rect x="9" y="2" width="7" height="7" rx="1.2" fill="#F4A261"/>
+      <rect x="18" y="2" width="7" height="7" rx="1.2" fill="#2A9D8F"/>
+      <rect x="0" y="11" width="7" height="7" rx="1.2" fill="#457B9D"/>
+      <rect x="9" y="11" width="7" height="7" rx="1.2" fill="#E9C46A"/>
+      <rect x="18" y="11" width="7" height="7" rx="1.2" fill="#E63946"/>
+      <rect x="0" y="20" width="7" height="7" rx="1.2" fill="#2A9D8F"/>
+      <rect x="9" y="20" width="7" height="7" rx="1.2" fill="#457B9D"/>
+      <rect x="18" y="20" width="7" height="7" rx="1.2" fill="#F4A261"/>
+      <text x="32" y="27" font-family="'Plus Jakarta Sans',system-ui,sans-serif" font-size="25" font-weight="800" letter-spacing="-1" fill="#1A1A1A">photopoly</text>
+    </svg>
+  </button>
   <ul class="nav-links">
     <li><button class="nav-btn" onclick="navTo('products')">Products</button></li>
     <li><button class="nav-btn" onclick="navTo('order')">Order</button></li>
@@ -516,25 +522,13 @@ footer p{font-size:.74rem;color:var(--text3)}
   <div class="gift-inner">
     <div class="gift-text">
       <div class="sec-label">Perfect for Every Occasion</div>
-      <div class="sec-title">The gift that<br>hits different.</div>
+      <div class="sec-title">The gift that<br><span style="color:var(--green)">hits different.</span></div>
       <p class="sec-sub">Unlike candles or gift cards, photo magnets show real thought and real memories. Every time they open the fridge, they think of you.</p>
-      <div class="occasion-banners">
-        <div id="occ-0" class="occ-banner occ-birthday">
-          <div class="occ-title">Birthdays</div>
-          <div class="occ-desc">Make it memorable</div>
-        </div>
-        <div id="occ-1" class="occ-banner occ-anniversary">
-          <div class="occ-title">Anniversaries</div>
-          <div class="occ-desc">Celebrate love</div>
-        </div>
-        <div id="occ-2" class="occ-banner occ-holiday">
-          <div class="occ-title">Holidays</div>
-          <div class="occ-desc">Gift with heart</div>
-        </div>
-        <div id="occ-3" class="occ-banner occ-justbecause">
-          <div class="occ-title">Just Because</div>
-          <div class="occ-desc">Surprise someone special</div>
-        </div>
+      <div class="occasion-list">
+        <div class="occ-item">Birthdays</div>
+        <div class="occ-item">Anniversaries</div>
+        <div class="occ-item">Holidays</div>
+        <div class="occ-item">Just Because</div>
       </div>
     </div>
     <div class="gift-slideshow-col">
@@ -731,7 +725,7 @@ footer p{font-size:.74rem;color:var(--text3)}
         <span>How would you like to handle the photos?</span>
       </div>
       <div class="intent-wrap" style="margin-bottom:0">
-        <div class="intent-card" style="background:#4A4A4A" onclick="setGiftType('self-photos')">
+        <div class="intent-card" style="background:linear-gradient(135deg,#2A9D8F 0%,#1F7A6E 100%)" onclick="setGiftType('self-photos')">
           <div class="intent-tag">I pick the photos</div>
           <div class="intent-title">I'll choose<br>& they receive.</div>
           <div class="intent-desc">I upload photos myself and ship directly to the recipient's address.</div>
@@ -740,7 +734,7 @@ footer p{font-size:.74rem;color:var(--text3)}
             I'll Upload
           </div>
         </div>
-        <div class="intent-card" style="background:linear-gradient(135deg,#4CAF78 0%,#2D7D52 100%)" onclick="setGiftType('link')">
+        <div class="intent-card" style="background:linear-gradient(135deg,#457B9D 0%,#1D3557 100%)" onclick="setGiftType('link')">
           <div class="intent-tag">They pick the photos</div>
           <div class="intent-title">I order,<br>they upload.</div>
           <div class="intent-desc">I complete the order & payment, then send a link — they choose the photos themselves.</div>
@@ -807,39 +801,10 @@ footer p{font-size:.74rem;color:var(--text3)}
         <div class="ugrid" id="ugrid"></div>
         <p class="upload-note">JPG, PNG, HEIC · Max 20MB per photo · Higher resolution = sharper print</p>
       </div>
-      <!-- Step 3: Shipping -->
-      <div class="form-step">
-        <div class="step-hd"><div class="step-n">3</div><div class="step-t">Shipping Details</div></div>
-
-        <!-- Ship to selector -->
-        <div class="ship-type-row">
-          <button class="ship-type-btn active" id="ship-me" onclick="setShipType('me')">
-            <span class="ship-type-label">Ship to me</span>
-          </button>
-          <button class="ship-type-btn" id="ship-gift" onclick="setShipType('gift')">
-            <span class="ship-type-label">Ship as a gift</span>
-          </button>
-        </div>
-        <div id="ship-gift-note" style="display:none;background:var(--gl);border-radius:9px;padding:11px 14px;font-size:.78rem;color:var(--text2);margin-bottom:14px;line-height:1.6;border-left:3px solid var(--green)">
-          Enter your <strong>recipient's name and address</strong> below — the magnets will ship directly to them as a surprise.
-        </div>
-
-        <div class="fg two">
-          <div class="fgp"><label id="lbl-fname">First Name</label><input type="text" id="fname" placeholder="Jane"></div>
-          <div class="fgp"><label id="lbl-lname">Last Name</label><input type="text" id="lname" placeholder="Smith"></div>
-        </div>
-        <div class="fg two"><div class="fgp"><label>Your Email</label><input type="email" id="email" placeholder="jane@email.com"></div><div class="fgp"><label>Your Phone</label><input type="tel" id="phone" placeholder="(555) 000-0000"></div></div>
-        <div class="fg one"><div class="fgp"><label id="lbl-addr">Street Address</label><input type="text" id="addr1" placeholder="123 Main Street"></div></div>
-        <div class="fg two"><div class="fgp"><label>Apt / Suite</label><input type="text" id="addr2" placeholder="Apt 4B"></div><div class="fgp"><label>City</label><input type="text" id="city" placeholder="New York"></div></div>
-        <div class="fg two">
-          <div class="fgp"><label>State</label><select id="state"><option value="">Select state…</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
-          <div class="fgp"><label>ZIP Code</label><input type="text" id="zip" placeholder="10001" maxlength="5"></div>
-        </div>
-        <div class="fg one"><div class="fgp"><label style="color:var(--green)">Gift Message (optional — included free)</label><textarea id="gift-msg" class="gift-field" placeholder="Write a personal message for the recipient… e.g. 'Happy Birthday! 🎉'"></textarea></div></div>
-      </div>
+      <!-- Step 3: Shipping — hidden, shown in modal -->
       <!-- Step 4: Payment -->
       <div class="form-step">
-        <div class="step-hd"><div class="step-n">4</div><div class="step-t">Payment</div></div>
+        <div class="step-hd"><div class="step-n">3</div><div class="step-t">Payment</div></div>
         <div class="card-note">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           You'll be securely redirected to <strong style="margin-left:3px;color:var(--text)">Stripe</strong> to complete payment. Card info is never stored on our servers.
@@ -856,7 +821,7 @@ footer p{font-size:.74rem;color:var(--text3)}
           <div class="sum-row"><span>Shipping</span><span id="s-ship">$4.99</span></div>
           <div class="sum-row total"><span>Total</span><span id="s-total">—</span></div>
         </div>
-        <button class="btn-pay" id="btn-pay" onclick="submitOrder()">Place Order & Pay Securely →</button>
+        <button class="btn-pay" onclick="openShippingModal()">Enter Shipping & Pay →</button>
       </div>
     </div>
     </div><!-- end order-form -->
@@ -906,7 +871,47 @@ footer p{font-size:.74rem;color:var(--text3)}
   </div>
 </div>
 
-<!-- SUCCESS MODAL -->
+<!-- SHIPPING MODAL -->
+<div class="overlay" id="ship-overlay">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-hdr">
+      <h3>Shipping Details</h3>
+      <button class="modal-close" onclick="document.getElementById('ship-overlay').classList.remove('open')">✕</button>
+    </div>
+    <div style="padding:22px 24px">
+      <div class="ship-type-row">
+        <button class="ship-type-btn active" id="ship-me" onclick="setShipType('me')">
+          <span class="ship-type-label">Ship to me</span>
+        </button>
+        <button class="ship-type-btn" id="ship-gift" onclick="setShipType('gift')">
+          <span class="ship-type-label">Ship as a gift</span>
+        </button>
+      </div>
+      <div id="ship-gift-note" style="display:none;background:var(--gl);border-radius:9px;padding:11px 14px;font-size:.78rem;color:var(--text2);margin-bottom:14px;line-height:1.6;border-left:3px solid var(--green)">
+        Enter your <strong>recipient's name and address</strong> below — the magnets will ship directly to them as a surprise.
+      </div>
+      <div class="fg two">
+        <div class="fgp"><label id="lbl-fname">First Name</label><input type="text" id="fname" placeholder="Jane"></div>
+        <div class="fgp"><label id="lbl-lname">Last Name</label><input type="text" id="lname" placeholder="Smith"></div>
+      </div>
+      <div class="fg two">
+        <div class="fgp"><label>Your Email</label><input type="email" id="email" placeholder="jane@email.com"></div>
+        <div class="fgp"><label>Your Phone</label><input type="tel" id="phone" placeholder="(555) 000-0000"></div>
+      </div>
+      <div class="fg one"><div class="fgp"><label id="lbl-addr">Street Address</label><input type="text" id="addr1" placeholder="123 Main Street"></div></div>
+      <div class="fg two">
+        <div class="fgp"><label>Apt / Suite</label><input type="text" id="addr2" placeholder="Apt 4B"></div>
+        <div class="fgp"><label>City</label><input type="text" id="city" placeholder="New York"></div>
+      </div>
+      <div class="fg two">
+        <div class="fgp"><label>State</label><select id="state"><option value="">Select state…</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
+        <div class="fgp"><label>ZIP Code</label><input type="text" id="zip" placeholder="10001" maxlength="5"></div>
+      </div>
+      <div class="fg one"><div class="fgp"><label style="color:var(--green)">Gift Message (optional — included free)</label><textarea id="gift-msg" class="gift-field" placeholder="Write a personal message… e.g. 'Happy Birthday!'"></textarea></div></div>
+      <button class="btn-pay" id="btn-pay" onclick="submitOrder()" style="margin-top:16px">Place Order & Pay Securely →</button>
+    </div>
+  </div>
+</div>
 <div class="overlay" id="success-overlay">
   <div class="success-box">
     <div class="s-icon" style="width:48px;height:48px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
@@ -1108,6 +1113,11 @@ function goHeroSlide(i){
   });
 }
 setInterval(function(){goHeroSlide((heroIdx+1)%heroTotal)},4000);
+
+function openShippingModal(){
+  if(!S.prodId){alert('Please select a product first.');return}
+  document.getElementById('ship-overlay').classList.add('open');
+}
 
 function navTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
 
@@ -1391,7 +1401,7 @@ function shareVia(platform){
   window.open(urls[platform],'_blank');
 }
 
-['req-overlay','success-overlay'].forEach(function(id){
+['req-overlay','success-overlay','ship-overlay'].forEach(function(id){
   var el=document.getElementById(id);
   if(el) el.addEventListener('click',function(e){if(e.target.id===id)document.getElementById(id).classList.remove('open')});
 });
