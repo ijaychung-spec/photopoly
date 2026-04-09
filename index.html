@@ -72,11 +72,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 .sec-title{font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:800;letter-spacing:-0.04em;line-height:1.15;margin-bottom:8px}
 .sec-sub{font-size:.9rem;color:var(--text2);line-height:1.75;margin-bottom:24px}
 
-/* Occasion banners — Instagram inspired */
-.occasion-list{margin-top:20px;display:flex;flex-direction:column;gap:0}
-.occ-item{font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;color:var(--text);padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
-.occ-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
-.occ-item:first-child{border-top:1px solid var(--border)}
+/* Occasion image banners — 2x2 grid */
+.occasion-banners-new{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
+.occ-banner-new{position:relative;border-radius:12px;overflow:hidden;height:100px;cursor:pointer;transition:transform .2s}
+.occ-banner-new:hover{transform:scale(1.02)}
+.occ-banner-img{position:absolute;inset:0;width:100%;height:100%;background-size:cover;background-position:center}
+.occ-banner-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.occ-banner-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.15) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:12px 14px}
+.occ-banner-label{font-size:.88rem;font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1.1}
+.occ-banner-sub{font-size:.62rem;color:rgba(255,255,255,.75);margin-top:2px;font-weight:500}
 
 /* Product slideshow */
 .product-slideshow{margin-top:40px;position:relative;border-radius:var(--rl);overflow:hidden;box-shadow:0 8px 32px rgba(45,125,82,.12);background:var(--bg)}
@@ -377,6 +381,8 @@ footer p{font-size:.74rem;color:var(--text3)}
   .gift-inner{grid-template-columns:1fr!important;gap:28px}
   .sec-title{font-size:1.45rem}
   .sec-sub{font-size:.84rem}
+  .occasion-banners-new{grid-template-columns:1fr 1fr;gap:6px}
+  .occ-banner-new{height:85px}
   .section{padding:40px 14px}
   .coating-toggle{font-size:.8rem}
   .ct-btn{padding:10px 14px;font-size:.8rem}
@@ -524,11 +530,35 @@ footer p{font-size:.74rem;color:var(--text3)}
       <div class="sec-label">Perfect for Every Occasion</div>
       <div class="sec-title">The gift that<br><span style="color:var(--green)">hits different.</span></div>
       <p class="sec-sub">Unlike candles or gift cards, photo magnets show real thought and real memories. Every time they open the fridge, they think of you.</p>
-      <div class="occasion-list">
-        <div class="occ-item">Birthdays</div>
-        <div class="occ-item">Anniversaries</div>
-        <div class="occ-item">Holidays</div>
-        <div class="occ-item">Just Because</div>
+      <div class="occasion-banners-new">
+        <div class="occ-banner-new" onclick="navTo('order')">
+          <div class="occ-banner-img" id="occ-img-birthday" style="background:linear-gradient(135deg,#E63946,#c1121f)"></div>
+          <div class="occ-banner-overlay">
+            <div class="occ-banner-label">Birthdays</div>
+            <div class="occ-banner-sub">Make it unforgettable</div>
+          </div>
+        </div>
+        <div class="occ-banner-new" onclick="navTo('order')">
+          <div class="occ-banner-img" id="occ-img-anniversary" style="background:linear-gradient(135deg,#457B9D,#1d3557)"></div>
+          <div class="occ-banner-overlay">
+            <div class="occ-banner-label">Anniversaries</div>
+            <div class="occ-banner-sub">Celebrate your memories</div>
+          </div>
+        </div>
+        <div class="occ-banner-new" onclick="navTo('order')">
+          <div class="occ-banner-img" id="occ-img-holiday" style="background:linear-gradient(135deg,#2A9D8F,#1F7A6E)"></div>
+          <div class="occ-banner-overlay">
+            <div class="occ-banner-label">Holidays</div>
+            <div class="occ-banner-sub">The gift they'll keep forever</div>
+          </div>
+        </div>
+        <div class="occ-banner-new" onclick="navTo('order')">
+          <div class="occ-banner-img" id="occ-img-justbecause" style="background:linear-gradient(135deg,#F4A261,#e76f51)"></div>
+          <div class="occ-banner-overlay">
+            <div class="occ-banner-label">Just Because</div>
+            <div class="occ-banner-sub">Surprise someone special</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="gift-slideshow-col">
@@ -1021,6 +1051,17 @@ async function loadAdminImages(){
       } else if(key.startsWith('slide_prem_')){
         var idx=key.replace('slide_prem_','');
         applyImg('prem-img-'+idx,src);
+      } else if(key.startsWith('occ_')){
+        var occKey=key.replace('occ_','');
+        var el=document.getElementById('occ-img-'+occKey);
+        if(el){
+          el.style.background='none';
+          var img=document.createElement('img');
+          img.src=src;
+          img.style.cssText='width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0';
+          el.innerHTML='';
+          el.appendChild(img);
+        }
       }
     });
   }catch(e){

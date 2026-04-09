@@ -95,7 +95,7 @@ button{font-family:inherit;cursor:pointer}
 .btn-replace{background:#fff;color:var(--text);border:none;padding:5px 12px;border-radius:6px;font-size:.7rem;font-weight:700}
 .btn-rem{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:6px;font-size:.66rem;font-weight:600}
 .slot-badge{position:absolute;top:6px;right:6px;background:var(--green);color:#fff;font-size:.58rem;font-weight:700;padding:2px 7px;border-radius:4px}
-.slides-row{display:grid;gap:8px}.slides-5{grid-template-columns:repeat(5,1fr)}.slides-3{grid-template-columns:repeat(3,1fr)}
+.slides-row{display:grid;gap:8px}.slides-5{grid-template-columns:repeat(5,1fr)}.slides-4{grid-template-columns:repeat(4,1fr)}.slides-3{grid-template-columns:repeat(3,1fr)}
 .slide-wrap{display:flex;flex-direction:column;gap:4px}.slide-num{font-size:.62rem;font-weight:700;color:var(--text3);text-align:center}
 .slide-slot .slot-ph{padding:14px 6px}.slide-slot .slot-ph-label{font-size:.64rem}.slide-slot .slot-prev img{max-height:72px}
 @media(max-width:700px){.hdr,.tabs{padding-left:14px;padding-right:14px}.page{padding:14px 12px 60px}.drawer{width:100vw}.si-grid{grid-template-columns:1fr}.si-full{grid-column:unset}.slides-5{grid-template-columns:repeat(3,1fr)}.otable th:nth-child(4),.otable td:nth-child(4),.otable th:nth-child(5),.otable td:nth-child(5){display:none}.filter-wrap{gap:4px}.filter-btn{font-size:.68rem;padding:5px 10px}}
@@ -176,6 +176,14 @@ button{font-family:inherit;cursor:pointer}
       <div class="si-card-hdr"><h3>Gift Section Slideshow</h3><p>5 images shown in the product preview carousel</p></div>
       <div class="si-card-body">
         <div class="slides-row slides-5" id="slides-main"></div>
+      </div>
+    </div>
+
+    <!-- Occasion banners: 4 slots -->
+    <div class="si-card si-full">
+      <div class="si-card-hdr"><h3>Occasion Banners</h3><p>4 images — Birthdays / Anniversaries / Holidays / Just Because (wide crop recommended: 600×150px)</p></div>
+      <div class="si-card-body">
+        <div class="slides-row slides-4" id="slides-occ"></div>
       </div>
     </div>
 
@@ -742,16 +750,17 @@ function addDemo(){
 }
 
 // ─── SITE IMAGES ─────────────────────────────────────────────
-function buildSlideRow(containerId, keyPrefix, count){
+function buildSlideRow(containerId, keyPrefix, count, labels){
   var wrap=document.getElementById(containerId);
   wrap.innerHTML='';
   for(var i=0;i<count;i++){
     (function(idx){
-      var key=keyPrefix+'_'+idx;
+      var key=keyPrefix==='occ'?'occ_'+['birthday','anniversary','holiday','justbecause'][idx]:keyPrefix+'_'+idx;
+      var label=labels?labels[idx]:(idx+1);
       var saved=localStorage.getItem('pp_'+key);
       var div=document.createElement('div');
       div.className='slide-wrap';
-      div.innerHTML='<div class="slide-num">'+(idx+1)+'</div>'
+      div.innerHTML='<div class="slide-num">'+label+'</div>'
         +'<div class="img-slot slide-slot" id="slot-'+key+'">'
         +'<input type="file" id="input-'+key+'" accept="image/*">'
         +'<div id="ph-'+key+'" class="slot-ph" style="'+(saved?'display:none':'')+'">'
@@ -906,6 +915,7 @@ function setSiStatus(s){
   await loadOrders();
   buildSlideRow('slides-hero','hero',5);
   buildSlideRow('slides-main','slide_main',5);
+  buildSlideRow('slides-occ','occ',4,['Birthdays','Anniversaries','Holidays','Just Because']);
   buildSlideRow('slides-matt','slide_matt',3);
   buildSlideRow('slides-prem','slide_prem',3);
   await loadSiteImages();
