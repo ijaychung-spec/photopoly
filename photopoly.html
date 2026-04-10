@@ -74,13 +74,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 
 /* Occasion image banners — 2x2 grid */
 .occasion-banners-new{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
-.occ-banner-new{position:relative;border-radius:12px;overflow:hidden;height:100px;cursor:pointer;transition:transform .2s}
+.occ-banner-new{position:relative;border-radius:12px;overflow:hidden;height:110px;cursor:pointer;transition:transform .2s}
 .occ-banner-new:hover{transform:scale(1.02)}
 .occ-banner-img{position:absolute;inset:0;width:100%;height:100%;background-size:cover;background-position:center}
 .occ-banner-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.occ-banner-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.48) 0%,rgba(0,0,0,.12) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:12px 14px}
-.occ-banner-label{font-size:.88rem;font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1.1}
-.occ-banner-sub{font-size:.72rem;color:rgba(255,255,255,.9);font-weight:600;line-height:1.4}
+.occ-banner-typo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;font-style:italic;letter-spacing:-0.02em;color:rgba(255,255,255,.97);text-shadow:0 2px 16px rgba(0,0,0,.2);text-align:center;padding:8px;line-height:1.1;background:rgba(0,0,0,.1)}
 
 /* Product slideshow */
 .product-slideshow{margin-top:40px;position:relative;border-radius:var(--rl);overflow:hidden;box-shadow:0 8px 32px rgba(45,125,82,.12);background:var(--bg)}
@@ -533,27 +531,19 @@ footer p{font-size:.74rem;color:var(--text3)}
       <div class="occasion-banners-new">
         <div class="occ-banner-new" onclick="navTo('order')">
           <div class="occ-banner-img" id="occ-img-birthday" style="background:linear-gradient(135deg,#E63946,#c1121f)"></div>
-          <div class="occ-banner-overlay">
-            <div class="occ-banner-sub">A gift they'll smile at every day.</div>
-          </div>
+          <div class="occ-banner-typo">Cherish</div>
         </div>
         <div class="occ-banner-new" onclick="navTo('order')">
           <div class="occ-banner-img" id="occ-img-anniversary" style="background:linear-gradient(135deg,#457B9D,#1d3557)"></div>
-          <div class="occ-banner-overlay">
-            <div class="occ-banner-sub">Some memories deserve to stay close.</div>
-          </div>
+          <div class="occ-banner-typo">Timeless</div>
         </div>
         <div class="occ-banner-new" onclick="navTo('order')">
           <div class="occ-banner-img" id="occ-img-holiday" style="background:linear-gradient(135deg,#2A9D8F,#1F7A6E)"></div>
-          <div class="occ-banner-overlay">
-            <div class="occ-banner-sub">More meaningful than any gift card.</div>
-          </div>
+          <div class="occ-banner-typo">Beloved</div>
         </div>
         <div class="occ-banner-new" onclick="navTo('order')">
           <div class="occ-banner-img" id="occ-img-justbecause" style="background:linear-gradient(135deg,#F4A261,#e76f51)"></div>
-          <div class="occ-banner-overlay">
-            <div class="occ-banner-sub">Because you thought of them today.</div>
-          </div>
+          <div class="occ-banner-typo">Forever</div>
         </div>
       </div>
     </div>
