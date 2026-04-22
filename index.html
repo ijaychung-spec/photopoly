@@ -72,7 +72,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 .sec-title{font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:800;letter-spacing:-0.04em;line-height:1.15;margin-bottom:8px}
 .sec-sub{font-size:.9rem;color:var(--text2);line-height:1.75;margin-bottom:24px}
 
-/* Occasion image banners — 2x2 grid */
+/* Reviews section */
+.reviews-section{padding:52px 44px;background:#fff;border-top:1px solid var(--border)}
+.reviews-wrap{max-width:1100px;margin:0 auto}
+.reviews-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.reviews-stars{font-size:.9rem;color:#F4A261;font-weight:700;letter-spacing:.02em}
+.reviews-stars span{color:var(--text2);font-weight:600;margin-left:4px}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.review-card{border-radius:10px;overflow:hidden;border:1.5px solid var(--border);background:var(--bg2)}
+.review-img-wrap{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative}
+.review-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.review-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--text3);background:var(--bg2);min-height:120px}
+
+@media(max-width:600px){
+  .reviews-section{padding:40px 14px}
+  .reviews-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .review-img-ph{min-height:90px;font-size:.65rem}
+}
 .occasion-banners-new{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
 .occ-banner-new{position:relative;border-radius:12px;overflow:hidden;height:110px;cursor:pointer;transition:transform .2s}
 .occ-banner-new:hover{transform:scale(1.02)}
@@ -516,6 +532,48 @@ footer p{font-size:.74rem;color:var(--text3)}
         <div class="hsd" onclick="goHeroSlide(2)"></div>
         <div class="hsd" onclick="goHeroSlide(3)"></div>
         <div class="hsd" onclick="goHeroSlide(4)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS SECTION -->
+<section class="reviews-section">
+  <div class="reviews-wrap">
+    <div class="reviews-hdr">
+      <div class="sec-label">What customers say</div>
+      <div class="reviews-stars">★★★★★ <span>5.0</span></div>
+    </div>
+    <div class="reviews-grid" id="reviews-grid">
+      <div class="review-card">
+        <div class="review-img-wrap" id="review-img-0">
+          <div class="review-img-ph">Upload review screenshot</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-img-wrap" id="review-img-1">
+          <div class="review-img-ph">Upload review screenshot</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-img-wrap" id="review-img-2">
+          <div class="review-img-ph">Upload review screenshot</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-img-wrap" id="review-img-3">
+          <div class="review-img-ph">Upload review screenshot</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-img-wrap" id="review-img-4">
+          <div class="review-img-ph">Upload review screenshot</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-img-wrap" id="review-img-5">
+          <div class="review-img-ph">Upload review screenshot</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1037,6 +1095,12 @@ async function loadAdminImages(){
       } else if(key.startsWith('slide_prem_')){
         var idx=key.replace('slide_prem_','');
         applyImg('prem-img-'+idx,src);
+      } else if(key.startsWith('review_')){
+        var rIdx=key.replace('review_','');
+        var rWrap=document.getElementById('review-img-'+rIdx);
+        if(rWrap){
+          rWrap.innerHTML='<img src="'+src+'" alt="Review">';
+        }
       } else if(key.startsWith('occ_')){
         var occKey=key.replace('occ_','');
         var el=document.getElementById('occ-img-'+occKey);

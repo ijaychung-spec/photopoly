@@ -179,6 +179,14 @@ button{font-family:inherit;cursor:pointer}
       </div>
     </div>
 
+    <!-- Review screenshots: 6 slots -->
+    <div class="si-card si-full">
+      <div class="si-card-hdr"><h3>Customer Reviews</h3><p>6 review screenshots shown on the main page — recommended 4:3 ratio</p></div>
+      <div class="si-card-body">
+        <div class="slides-row slides-3" id="slides-review" style="grid-template-columns:repeat(3,1fr)"></div>
+      </div>
+    </div>
+
     <!-- Occasion banners: 4 slots -->
     <div class="si-card si-full">
       <div class="si-card-hdr"><h3>Occasion Banners</h3><p>4 images — Birthdays / Anniversaries / Holidays / Just Because (wide crop recommended: 600×150px)</p></div>
@@ -915,6 +923,7 @@ function setSiStatus(s){
   await loadOrders();
   buildSlideRow('slides-hero','hero',5);
   buildSlideRow('slides-main','slide_main',5);
+  buildSlideRow('slides-review','review',6);
   buildSlideRow('slides-occ','occ',4,['Birthdays','Anniversaries','Holidays','Just Because']);
   buildSlideRow('slides-matt','slide_matt',3);
   buildSlideRow('slides-prem','slide_prem',3);
