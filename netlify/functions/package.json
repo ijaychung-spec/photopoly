@@ -1,0 +1,8 @@
+{
+  "name": "photopoly-functions",
+  "version": "1.0.0",
+  "dependencies": {
+    "stripe": "^14.0.0",
+    "@easypost/api": "^5.0.0"
+  }
+}
