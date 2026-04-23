@@ -20,7 +20,8 @@ body{background:#fff!important;color:#1A1A1A!important;font-family:'Plus Jakarta
 button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation;font-family:inherit}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;background:#fff;border-bottom:1.5px solid var(--border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;background:#fff;border-bottom:1.5px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 44px}
 .logo{font-size:1.25rem;font-weight:800;letter-spacing:-0.04em;background:none;border:none;cursor:pointer;color:var(--text);padding:0;display:flex;align-items:center}
 .logo span{color:var(--green)}
 .nav-links{display:flex;gap:28px;list-style:none}
@@ -34,9 +35,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 
 /* HERO */
 .hero{padding:88px 44px 60px;max-width:1200px;margin:0 auto}
-.hero-top{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;margin-bottom:36px}
-.hero-title-col{display:flex;flex-direction:column}
-.hero-img-col{display:flex;align-items:center;justify-content:center}
+.hero-top{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:40px;margin-bottom:32px}
+.hero-title-col{display:flex;flex-direction:column;padding-top:0}
+.hero-img-col{display:flex;align-items:flex-start;justify-content:center}
 .hero-bottom{display:flex;flex-direction:column;gap:20px}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
 .hero-left{display:flex;flex-direction:column;justify-content:center}
@@ -359,6 +360,7 @@ footer p{font-size:.74rem;color:var(--text3)}
   .hero{padding:76px 18px 40px}
   .hero-top{grid-template-columns:1fr;gap:24px}
   .hero-img-col{display:none}
+  .nav-inner{padding:0 18px}
   .gift-inner{grid-template-columns:1fr;gap:32px}
   .gift-section{padding:52px 18px}
   .section{padding:52px 18px}
@@ -378,6 +380,7 @@ footer p{font-size:.74rem;color:var(--text3)}
   .hero{padding:68px 14px 36px}
   .hero-top{grid-template-columns:1fr!important;gap:20px}
   .hero-img-col{display:block!important;width:100%}
+  .nav-inner{padding:0 14px}
   .hero h1{font-size:1.75rem}
   .hero-sub{font-size:.86rem;margin-bottom:20px}
   .hero-chip{font-size:.68rem}
@@ -438,6 +441,7 @@ footer p{font-size:.74rem;color:var(--text3)}
 
 <!-- NAV -->
 <nav>
+<div class="nav-inner">
   <button class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <svg width="160" height="36" viewBox="0 0 160 36" xmlns="http://www.w3.org/2000/svg" style="display:block">
       <rect x="0" y="2" width="7" height="7" rx="1.2" fill="#E63946"/>
@@ -461,6 +465,7 @@ footer p{font-size:.74rem;color:var(--text3)}
   <div class="nav-right">
     <button class="btn-cta" onclick="navTo('order')">Order Now</button>
   </div>
+</div>
 </nav>
 
 <!-- HERO -->
@@ -470,6 +475,11 @@ footer p{font-size:.74rem;color:var(--text3)}
     <div class="hero-title-col">
       <div class="hero-chip"><div class="hero-dot"></div>Premium Fridge Magnet Photo Prints</div>
       <h1>Your photos,<br><span>on magnets</span><br>they'll love.</h1>
+      <div class="gift-proofs" style="margin-top:20px">
+        <div class="gp"><div class="gp-ic">★</div>4.9 average rating from 4,800+ happy customers</div>
+        <div class="gp"><div class="gp-ic">↗</div>Ships in 1–2 business days, arrives in 2–4 days</div>
+        <div class="gp"><div class="gp-ic">♥</div>Free gift message included with every order</div>
+      </div>
     </div>
     <div class="hero-img-col">
       <div class="hero-slide-wrap">
@@ -503,16 +513,11 @@ footer p{font-size:.74rem;color:var(--text3)}
       </div>
       <div class="hun-text">
         <strong>You choose the photos — or let someone else.</strong>
-        Upload your own at checkout, or after ordering get a shareable link to send a friend, partner, or family member so they can pick theirs. Great for surprise gifts!
+        Upload your own, or send a link so a friend or family member can pick theirs. Perfect for surprise gifts.
       </div>
     </div>
     <div class="hero-btns">
       <button class="btn-primary" onclick="navTo('order')">Order Now →</button>
-    </div>
-    <div class="gift-proofs">
-      <div class="gp"><div class="gp-ic">★</div>4.9 average rating from 4,800+ happy customers</div>
-      <div class="gp"><div class="gp-ic">↗</div>Ships in 1–2 business days, arrives in 2–4 days</div>
-      <div class="gp"><div class="gp-ic">♥</div>Free gift message included with every order</div>
     </div>
     <div class="hero-stats">
       <div class="hs"><div class="hs-n">4,800+</div><div class="hs-l">Orders sent</div></div>
