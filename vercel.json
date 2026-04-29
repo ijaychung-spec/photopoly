@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/photopoly-upload", "destination": "/photopoly-upload.html" },
+    { "source": "/photopoly-confirm", "destination": "/photopoly-confirm.html" },
+    { "source": "/photopoly-admin", "destination": "/photopoly-admin.html" },
+    { "source": "/photopoly-orders", "destination": "/photopoly-orders.html" },
+    { "source": "/photopoly", "destination": "/photopoly.html" }
+  ]
+}

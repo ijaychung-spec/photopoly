@@ -1393,7 +1393,7 @@ async function submitOrder(){
     btn.textContent='Redirecting to payment…';
     var sub=S.price*S.qty;
     var ship=sub>=30?0:4.99;
-    var stripeRes=await fetch('/.netlify/functions/create-checkout',{
+    var stripeRes=await fetch('/api/create-checkout',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({

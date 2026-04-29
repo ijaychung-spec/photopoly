@@ -584,7 +584,7 @@ async function buyLabel(oid){
   btn.textContent='Buying label…';btn.disabled=true;
 
   try{
-    var res=await fetch('/.netlify/functions/create-label',{
+    var res=await fetch('/api/create-label',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({order:o})
