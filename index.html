@@ -379,7 +379,11 @@ footer p{font-size:.74rem;color:var(--text3)}
 @media(max-width:600px){
   .hero{padding:68px 14px 36px}
   .hero-top{grid-template-columns:1fr!important;gap:20px}
-  .hero-img-col{display:block!important;width:100%}
+  .hero-img-col{display:block!important;width:100%;overflow:hidden}
+  .hero-slide-wrap{max-width:100%!important;border-radius:14px}
+  .hero-slide-track{width:100%}
+  .hero-slide{min-width:100%}
+  .hero-slide-img{max-height:280px!important;aspect-ratio:unset!important;height:280px;object-fit:cover}
   .nav-inner{padding:0 14px}
   .hero h1{font-size:1.75rem}
   .hero-sub{font-size:.86rem;margin-bottom:20px}
